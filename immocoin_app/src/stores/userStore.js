@@ -1,6 +1,6 @@
 import { atom } from 'jotai'
 
-export const userAtom = atom({
+const userAtom = atom({
   auth_token: null,
     user: {
       id: null,
@@ -9,5 +9,8 @@ export const userAtom = atom({
     },
     loading: false,
     hasErrors: false,
-    authenticated: false
+    authenticated: false,
+    logged: false
 })
+
+export default userAtom;
