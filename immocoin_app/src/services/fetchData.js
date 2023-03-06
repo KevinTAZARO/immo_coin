@@ -1,82 +1,89 @@
 import axios from 'axios';
-import { userAtom } from '../stores/userStore';
+import Cookies from 'js-cookie';
 
 const API_URL = "http://localhost:3000";
 
-async function getFetch(endpoint) {
-  const response = await axios.get(`${API_URL}/${endpoint}`);
-  return response.data;
+async function getFetch(endpoint, data) {
+  try {
+    const response = await axios.get(`${API_URL}/${endpoint}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': data
+      }
+    });
+    console.log(response)
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 async function postFetch(endpoint, data) {
-  const response = await axios.post(`${API_URL}/${endpoint}`, data, {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-  .then(response => {
+  try {
+    const response = await axios.post(`${API_URL}/${endpoint}`, data, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
     console.log(response.data);
-  })
-  .catch(error => {
+    return response;
+  } catch (error) {
     console.error(error);
-  })
+  }
 }
 
 async function deleteFetch(endpoint, data) {
-  const response = await axios.delete(`${API_URL}/${endpoint}`, data, {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-  .then(response => {
+  try {
+    const response = await axios.delete(`${API_URL}/${endpoint}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': data
+      }
+    })
     console.log(response.data);
-  })
-  .catch(error => {
-    console.error(error);
-  })
+    return response;
+  } catch (error) {
+      console.error(error);
+  }
 }
 
 export const authAPI = {
-  register: async (data) => {
-    try {
-      const response = await postFetch('users', data);
-      userAtom.update((user) => ({
-        ...user,
-        auth_token: response.auth_token,
-        user: {
-          id: response.user.id,
-          username: response.user.username,
-          email: response.user.email
-        },
-        authenticated: true
-      }));
-      return response;
-    } catch (error) {
-      throw error;
-    }
-  },
-  login:  async (data) => {
-    try {
-      const response = await postFetch('users/sign_in', data);
-      if (response.data.user) {
-        userAtom.update((user) => ({
+  register: async (data, setUser) => {
+      try {
+        const response = await postFetch('users', data);
+        setUser((user) => ({
           ...user,
-          auth_token: response.headers.authorization,
           user: {
             id: response.data.user.id,
             username: response.data.user.username,
             email: response.data.user.email
-          }.email,
+          },
+      }));
+    } catch (error) {
+      throw error;
+    }
+  },
+  login:  async (data, setUser) => {
+    try {
+      const response = await postFetch('users/sign_in', data);
+      const auth_token = response.headers.authorization.split(' ')[1]
+      if (response.data.user) {
+        setUser((user) => ({
+          ...user,
+          auth_token: auth_token,
+          user: {
+            email: response.data.user.email
+          },
           loading: false,
           hasErrors: false,
           authenticated: true
         }));
-        axios.defaults.headers.common["Authorization"] = response.headers.authorization;
+        Cookies.set('auth_token', auth_token)
       } else {
         throw new Error('invalid password or email');
       }
     } catch (error) {
-      userAtom.update((user) => ({
+      setUser((user) => ({
         ...user,
         loading: false,
         hasErrors: true,
@@ -86,15 +93,10 @@ export const authAPI = {
       throw error;
     }
   },
-  logout: async () => {
-    const data = {
-      headers: {
-        Authorization: `Bearer ${userAtom.value.auth_token}`
-      }
-    };
+  logout: async (data, setUser) => {
     try {
-      await axios.deleteFetch('users/sign_out', data);
-      userAtom.update((user) => ({
+      await deleteFetch('users/sign_out', data);
+      setUser((user) => ({
         ...user,
         user: {
           id: null,
@@ -102,9 +104,29 @@ export const authAPI = {
           email: null
         },
         auth_token: null,
-        authenticated: false
+        authenticated: false,
+        logged: false
       }));
-      axios.defaults.headers.common['Authorization'] = null;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  },
+  loginWithToken: async (data, setUser) => {
+    try {
+      const response = await getFetch('member-data', data);
+      const auth_token = Cookies.get('auth_token')
+      setUser((user) => ({
+        ...user,
+        auth_token: auth_token,
+        user: {
+          id: response.data.user.id,
+          username: response.data.user.username,
+          email: response.data.user.email
+        },
+        authenticated: true,
+        logged: true
+      }));
     } catch (error) {
       console.error(error);
       throw error;
