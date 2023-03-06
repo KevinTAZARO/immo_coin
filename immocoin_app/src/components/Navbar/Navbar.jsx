@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
 
   return (
-    <div>
+    <div className='navbar'>
       <div>
         <Link to="/register">S'inscrire</Link>
         <Link to="/sign_in">Se connecter</Link>
@@ -13,5 +13,3 @@ const Navbar = () => {
   )
 
 }
-
-export default Navbar
