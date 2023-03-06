@@ -1,12 +1,18 @@
 import React from 'react'
+import Navbar from '../../components/Navbar/Navbar'
+import Footer from '../../components/Footer/Footer'
 import './Home.scss'
 
 function Home() {
   return (
     <div className='home'>
-      <p>
-        Home
-      </p>
+      <Navbar />
+      <div className='home-title'>
+        <h1>
+          Home
+        </h1>
+      </div>
+      <Footer />  
     </div>
   )
 }
