@@ -1,8 +1,20 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import './Navbar.scss'
+import "./Navbar.scss";
+import { Link } from "react-router-dom";
+import userAtom from "../../stores/userStore";
+import { useAtomValue } from "jotai";
+import { authAPI } from "../../services/fetchData";
+import { useAtom } from "jotai";
+import Cookies from "js-cookie"
 
-export default function Navbar() {
+const Navbar = () => {
+
+  // const auth_token = Cookies.get('auth_token');
+
+  const userInfo = useAtomValue(userAtom)
+
+  // const [user, setUser] = useAtom(userAtom);
+  // const header = 'Bearer ' + auth_token
+
   return (
     <div className='navbar'>
       <div className='logo'>
@@ -17,7 +29,13 @@ export default function Navbar() {
         <Link to="/register">
           S'inscrire
         </Link>
+        {/* <button onClick={authAPI.logout(header, setUser)}>Se déconnecter</button> */}
+    
+        <p>{userInfo.user.username}</p>
+        <p>{userInfo.user.email}</p>
       </div>
     </div>
   )
+
 }
+
