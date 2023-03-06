@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
 import { authAPI } from '../../services/fetchData'
+import { useAtom } from 'jotai';
+import userAtom from '../../stores/userStore';
+import './Login.scss'
 
 const Login = () => {
+
+  const [user, setUser] = useAtom(userAtom);
 
   const [formData, setFormData] = useState(
     {
@@ -17,16 +22,18 @@ const Login = () => {
     });
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formDataToSent = { "user": formData }
-    console.log(formDataToSent)
-    authAPI.login(formData)
-
+    try {
+      const response = await authAPI.login(formDataToSent, setUser);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
-    <div>
+    <div className='login'>
       <form action="" onSubmit={handleSubmit}>
         <input type="email" name='email' placeholder='Email' value={formData.email} onChange={handleChange}/>
         <input type="password" name='password' placeholder='Mot de passe' value={formData.password} onChange={handleChange}/>
@@ -37,4 +44,4 @@ const Login = () => {
 
 }
 
-export default Login
+export default Login;
