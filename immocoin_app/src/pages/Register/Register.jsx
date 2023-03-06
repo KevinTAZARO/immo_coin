@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
 import { authAPI } from '../../services/fetchData'
+import { useAtom } from 'jotai';
+import userAtom from '../../stores/userStore';
+import './Register.scss'
 
 const Register = () => {
+
+  const [user, setUser] = useAtom(userAtom);
 
   const [formData, setFormData] = useState(
     {
@@ -19,23 +24,24 @@ const Register = () => {
     });
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.email === formData.emailConfirmation) {
       const { emailConfirmation, ...formDataWithoutEmailConfirmation } = formData
       const formDataToSent = {"user": formDataWithoutEmailConfirmation}
-      authAPI.register(formDataToSent)
+      try {
+        const response = await authAPI.register(formDataToSent, setUser);
+      } catch (error) {
+        console.log(error);
+      }
     } else {
-      return (
-        <div>
-          Les mots de passe ne correspondent pas.
-        </div>
-      )
-    }
+      console.log("Les mots de passe ne correspondent pas.");
+    }  
+    
   }
 
   return (
-    <div>
+    <div className='register'>
       <form action="" onSubmit={handleSubmit}>
         <input type="text" name='username' placeholder="Nom d'utilisateur" value={formData.username} onChange={handleChange}/>
         <input type="email" name='email' placeholder='Email' value={formData.email} onChange={handleChange}/>
@@ -48,4 +54,4 @@ const Register = () => {
 
 }
 
-export default Register
+export default Register;
