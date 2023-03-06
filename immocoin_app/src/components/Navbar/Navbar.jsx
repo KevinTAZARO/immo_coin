@@ -30,6 +30,7 @@ const Navbar = () => {
           S'inscrire
         </Link>
         {/* <button onClick={authAPI.logout(header, setUser)}>Se déconnecter</button> */}
+        
     
         <p>{userInfo.user.username}</p>
         <p>{userInfo.user.email}</p>
