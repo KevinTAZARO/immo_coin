@@ -1,27 +1,25 @@
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 1rem;
-    padding: 1rem;
-    background-color: transparent;
-    text-decoration: inherit;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 20px;
+  padding: 2rem;
+  background-color: transparent;
 
-    .logo {
+  .logo {
+    grid-column: 1 / 8;
+    grid-row: 1;
+  }
 
-    }
+  .authentication {
+    grid-column: 8 / 8;
+    grid-row: 1;
+    display:  flex;
+    justify-content: space-around;
+  }
 
-    .authentication {
-        display: flex;
-        justify-content: space-between;
-    }
-    
+  a {
+    text-decoration: none;
+    color: black;
+  }
   
-    p {
-      color: white;
-    }
 }

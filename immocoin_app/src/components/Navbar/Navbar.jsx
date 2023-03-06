@@ -12,10 +12,10 @@ export default function Navbar() {
       </div>
       <div className='authentication'>
         <Link to="/login">
-        se connecter
+          Se Connecter
         </Link>
         <Link to="/register">
-          s'enregister
+          S'inscrire
         </Link>
       </div>
     </div>
