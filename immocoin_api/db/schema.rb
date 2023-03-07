@@ -21,8 +21,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_100121) do
     t.string "address"
     t.string "city"
     t.string "zip_code"
-    t.boolean "garden"
-    t.boolean "garage"
+    t.integer "garden"
+    t.integer "garage"
     t.string "picture_url"
     t.integer "user_id"
     t.datetime "created_at", null: false
