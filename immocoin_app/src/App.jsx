@@ -10,6 +10,8 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Profile from "./pages/Profile/Profile";
+import Adverts from "./pages/Adverts/Adverts";
+
 
 function App() {
 
@@ -52,16 +54,15 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/sign_out" />
               <Route 
-                path="/profile/:id" 
+                path="/" 
                 element={
-                  <Layout>
-                    <ProtectedRoute>
-                      <Profile />
-                    </ProtectedRoute>
-                  </Layout>
+                  <ProtectedRoute>
+                    <Layout />
+                  </ProtectedRoute>
                 }
                 children= {[
-                  <Route key="profile" path="/profile/:id" element={<Profile />} />
+                  <Route key="profile" path="/profile/:id" element={<Profile />} />,
+                  <Route key="annonces" path="/annonces" element={<Adverts />}/>
                 ]} 
               />
               
