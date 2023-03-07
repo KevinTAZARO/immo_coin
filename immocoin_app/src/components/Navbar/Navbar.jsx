@@ -42,24 +42,26 @@ const Navbar = () => {
         <Link to="/"> 
           ImmoCoin
         </Link>
-        <p>{userInfo.user.username}</p>
-        <p>{userInfo.user.email}</p>
       </div>
-      
-        <div className='authentication'>
-          <Link to="/sign_in">
-            <MdSignalWifiStatusbarConnectedNoInternet />
-            Connexion
-          </Link>
-          <Link to="/register">
-            <AiFillPushpin />
-            S'inscrire
-          </Link>
+      { userInfo.logged === true ? 
+        <div className="userInfo">
+          <p>{userInfo.user.username} </p>
           <button onClick={handleClick}>
             Déconnection
           </button> 
-          
         </div>
+        :
+        <div className='authentication'>
+          <MdSignalWifiStatusbarConnectedNoInternet />
+          <Link to="/sign_in">
+            Connexion
+          </Link>
+          <AiFillPushpin />
+          <Link to="/register">
+            S'inscrire
+          </Link>
+        </div>        
+      }
     </div>
   )
 
