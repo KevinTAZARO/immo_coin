@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Navbar from '../../components/Navbar/Navbar'
 import Footer from '../../components/Footer/Footer'
+import { Link } from "react-router-dom";
 import { authAPI } from '../../services/fetchData'
 import { useAtom } from 'jotai';
 import userAtom from '../../stores/userStore';
@@ -14,8 +15,8 @@ const Register = () => {
     {
       username: "",
       email: "",
-      emailConfirmation: "",
-      password: ""
+      password: "",
+      passwordConfirmation: ""
     }
   )
 
@@ -28,9 +29,9 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.email === formData.emailConfirmation) {
-      const { emailConfirmation, ...formDataWithoutEmailConfirmation } = formData
-      const formDataToSent = {"user": formDataWithoutEmailConfirmation}
+    if (formData.password === formData.passwordConfirmation) {
+      const { passwordConfirmation, ...formDataWithoutpasswordConfirmation } = formData
+      const formDataToSent = {"user": formDataWithoutpasswordConfirmation}
       try {
         const response = await authAPI.register(formDataToSent, setUser);
       } catch (error) {
@@ -43,20 +44,43 @@ const Register = () => {
   }
 
   return (
+
     <div className='register'>
       <Navbar />
-      <div className='register-title'>
-        <h1>
-          Register
-        </h1>
-      </div>
-      <form action="" onSubmit={handleSubmit}>
-        <input type="text" name='username' placeholder="Nom d'utilisateur" value={formData.username} onChange={handleChange}/>
-        <input type="email" name='email' placeholder='Email' value={formData.email} onChange={handleChange}/>
-        <input type="email" name='emailConfirmation' placeholder='Confirmer votre email' value={formData.emailConfirmation} onChange={handleChange}/>
-        <input type="password" name='password' placeholder='Mot de passe' value={formData.password} onChange={handleChange}/>
-        <button type="submit" onClick={handleSubmit}>S'inscrire</button>
-      </form>
+      <section className="signup">
+            <div className="container">
+                <div className="signup-content">
+                    <div className="signup-form">
+                        <h2 className="form-title">Inscription</h2>
+                        <form action="" className="register-form" id="register-form" onSubmit={handleSubmit}>
+                            <div className="form-group">
+                                <label for="name"><i className="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="username" id="username" placeholder="Nom de compte" onChange={handleChange}/>
+                            </div>
+                            <div className="form-group">
+                                <label><i className="zmdi zmdi-email"></i></label>
+                                <input type="email" name="email" id="email" placeholder="Email" onChange={handleChange}/>
+                            </div>
+                            <div className="form-group">
+                                <label><i className="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password" id="password" placeholder="Mot de passe" onChange={handleChange}/>
+                            </div>
+                            <div className="form-group">
+                                <label><i className="zmdi zmdi-lock-outline"></i></label>
+                                <input type="password" name="passwordConfirmation" id="passwordConfirmation" placeholder="Confirmer le mot de passe" onChange={handleChange}/>
+                            </div>
+                            <div className="form-group form-button">
+                                <input type="submit" name="signup" id="signup" className="form-submit" value="S'inscrire"/>
+                            </div>
+                        </form>
+                    </div>
+                    <div className="signup-image">
+                        <figure><img src="./src/pages/Register/signup-image.jpg" alt="sing up image"/></figure>
+                        <Link to="/sign_in" className="signup-image-link">Je suis déjà inscrit.</Link>
+                    </div>
+                </div>
+            </div>
+        </section>
       <Footer />
     </div>
   )
