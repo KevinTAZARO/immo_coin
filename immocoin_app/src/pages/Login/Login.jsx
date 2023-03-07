@@ -1,5 +1,5 @@
 export default function Login() {
-
+  const navigate = useNavigate();
   const [user, setUser] = useAtom(userAtom);
 
   const [formData, setFormData] = useState(
@@ -21,6 +21,7 @@ export default function Login() {
     const formDataToSent = { "user": formData }
     try {
       const response = await authAPI.login(formDataToSent, setUser);
+      navigate('/', { replace: true });
     } catch (error) {
       console.log(error);
     }
@@ -64,7 +65,7 @@ export default function Login() {
 
 
 import React, { useState } from 'react'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAtom } from 'jotai';
 
 import Navbar from '../../components/Navbar/Navbar'
