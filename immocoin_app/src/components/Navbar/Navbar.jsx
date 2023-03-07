@@ -10,8 +10,7 @@ import { BsPersonFillCheck } from "react-icons/bs";
 
 import { useAtomValue, useAtom } from "jotai";
 
-import userAtom from "../../stores/userStore";
-import { authAPI } from "../../services/fetchData";
+
 
 const Navbar = () => {
   const auth_token = Cookies.get("auth_token");
