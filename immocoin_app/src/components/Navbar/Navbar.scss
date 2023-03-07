@@ -4,6 +4,12 @@
   gap: 20px;
   padding: 2rem;
   background-color: transparent;
+  &:hover {
+     > .authentication {
+      opacity: 0.5;
+    }
+  }
+  
 
   .logo {
     grid-column: 1 / 4;
