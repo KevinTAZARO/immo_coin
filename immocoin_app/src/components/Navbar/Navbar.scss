@@ -39,11 +39,21 @@
   .authentication {
     grid-column: 3 / 3;
     grid-row: 1;
-    display:  flex;
+    display: flex;
     justify-content: space-around;
-    align-items: center;
-    svg {
-      
+
+    .signin {
+      font-size: 2rem;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .reg {
+      font-size: 2rem;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
     }
   }
 
@@ -52,5 +62,4 @@
     color: #375513;
     font-size: 2rem;
   }
-  
 }
