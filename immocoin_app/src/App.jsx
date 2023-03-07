@@ -9,6 +9,7 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Profile from "./pages/Profile/Profile";
+import Adverts from "./pages/Adverts/Adverts";
 import './styles/style.scss'
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/sign_out" />
               <Route path="/profile/:id" element={<Profile />} />
+              <Route path="/annonces" element={<Adverts />}/>
             </Routes>
           </main>
         </div>
