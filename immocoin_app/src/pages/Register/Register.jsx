@@ -1,13 +1,4 @@
-import React, { useState } from 'react'
-import Navbar from '../../components/Navbar/Navbar'
-import Footer from '../../components/Footer/Footer'
-import { Link } from "react-router-dom";
-import { authAPI } from '../../services/fetchData'
-import { useAtom } from 'jotai';
-import userAtom from '../../stores/userStore';
-import './Register.scss'
-
-const Register = () => {
+export default function Register() {
 
   const [user, setUser] = useAtom(userAtom);
 
@@ -54,7 +45,7 @@ const Register = () => {
                 <h2 className="form-title">Inscription</h2>
                 <form action="" className="register-form" id="register-form" onSubmit={handleSubmit}>
                   <div className="form-group">
-                    <label for="name"><i className="zmdi zmdi-account material-icons-name"></i></label>
+                    <label><i className="zmdi zmdi-account material-icons-name"></i></label>
                     <input type="text" name="username" id="username" placeholder="Nom de compte" onChange={handleChange}/>
                   </div>
                   <div className="form-group">
@@ -87,4 +78,14 @@ const Register = () => {
 
 }
 
-export default Register;
+
+import React, { useState } from 'react'
+import { useAtom } from 'jotai';
+import { Link } from "react-router-dom";
+
+import Navbar from '../../components/Navbar/Navbar'
+import Footer from '../../components/Footer/Footer'
+import { authAPI } from '../../services/fetchData'
+
+import userAtom from '../../stores/userStore';
+import './Register.scss'
