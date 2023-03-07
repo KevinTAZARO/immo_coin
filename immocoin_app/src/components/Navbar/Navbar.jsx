@@ -50,6 +50,9 @@ const Navbar = () => {
           <Link to="/annonces">
             Annonces
           </Link>
+          <Link to="/annonce/post">
+            Poster une annonce
+          </Link>
           <Link to="/profile/:id">
             Profile
           </Link>
