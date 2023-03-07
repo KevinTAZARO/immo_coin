@@ -1,19 +1,4 @@
-import "./Navbar.scss";
-import { Link } from "react-router-dom";
-import userAtom from "../../stores/userStore";
-
-import { authAPI } from "../../services/fetchData";
-
-import Cookies from "js-cookie";
-import { GoSignIn } from "react-icons/go";
-import { BsPersonFillCheck } from "react-icons/bs";
-
-import { useAtomValue, useAtom } from "jotai";
-
-import userAtom from "../../stores/userStore";
-import { authAPI } from "../../services/fetchData";
-
-const Navbar = () => {
+export default function Navbar() {
   const auth_token = Cookies.get("auth_token");
 
   const userInfo = useAtomValue(userAtom);
@@ -78,4 +63,17 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+
+
+import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
+import { useAtomValue, useAtom } from "jotai";
+
+import userAtom from "../../stores/userStore";
+import { authAPI } from "../../services/fetchData";
+
+import { GoSignIn } from "react-icons/go";
+import { BsPersonFillCheck } from "react-icons/bs";
+
+
+import "./Navbar.scss";

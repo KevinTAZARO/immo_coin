@@ -1,14 +1,5 @@
-import React, { useState } from 'react'
-import { Link } from "react-router-dom";
-import Navbar from '../../components/Navbar/Navbar'
-import Footer from '../../components/Footer/Footer'
-import { authAPI } from '../../services/fetchData'
-import { useAtom } from 'jotai';
-import userAtom from '../../stores/userStore';
-import './Login.scss'
-
-const Login = () => {
-
+export default function Login() {
+  const navigate = useNavigate();
   const [user, setUser] = useAtom(userAtom);
 
   const [formData, setFormData] = useState(
@@ -30,6 +21,7 @@ const Login = () => {
     const formDataToSent = { "user": formData }
     try {
       const response = await authAPI.login(formDataToSent, setUser);
+      navigate('/', { replace: true });
     } catch (error) {
       console.log(error);
     }
@@ -43,7 +35,7 @@ const Login = () => {
             <div className="container">
                 <div className="signin-content">
                   <div className="signin-image">
-                      <figure><img src="./src/pages/Login/signin-image.jpg" alt="sing up image" /></figure>
+                      <figure><img src="./src/assets/images/signin-image.jpg" alt="sing up image" /></figure>
                       <Link to="/register" className="signup-image-link">Créer un compte</Link>
                   </div>
                   <div className="signin-form">
@@ -71,4 +63,16 @@ const Login = () => {
 
 }
 
-export default Login;
+
+import React, { useState } from 'react'
+import { Link, useNavigate } from "react-router-dom";
+import { useAtom } from 'jotai';
+
+import Navbar from '../../components/Navbar/Navbar'
+import Footer from '../../components/Footer/Footer'
+
+import { authAPI } from '../../services/fetchData'
+import userAtom from '../../stores/userStore';
+
+import './Login.scss'
+
