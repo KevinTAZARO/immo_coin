@@ -21,21 +21,24 @@ const Navbar = () => {
         <Link to="/"> 
           ImmoCoin
         </Link>
+        <p>{userInfo.user.username}</p>
+        <p>{userInfo.user.email}</p>
       </div>
       <div className='authentication'>
-        <Link to="/login">
-          Se Connecter
+        <Link to="/sign_in">
+          Connexion
         </Link>
         <Link to="/register">
           S'inscrire
         </Link>
         {/* <button onClick={authAPI.logout(header, setUser)}>Se déconnecter</button> */}
+        
     
-        <p>{userInfo.user.username}</p>
-        <p>{userInfo.user.email}</p>
+        
       </div>
     </div>
   )
 
 }
 
+export default Navbar;
