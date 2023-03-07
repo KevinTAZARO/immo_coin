@@ -63,6 +63,7 @@ export const authAPI = {
       throw error;
     }
   },
+
   login:  async (data, setUser) => {
     try {
       const response = await postFetch('users/sign_in', data);
@@ -93,6 +94,7 @@ export const authAPI = {
       throw error;
     }
   },
+
   logout: async (data) => {
     try {
       await deleteFetch('users/sign_out', data);
@@ -101,6 +103,7 @@ export const authAPI = {
       throw error;
     }
   },
+  
   loginWithToken: async (data, setUser) => {
     try {
       const response = await getFetch('member-data', data);
@@ -122,3 +125,4 @@ export const authAPI = {
     }
   }
 };
+
