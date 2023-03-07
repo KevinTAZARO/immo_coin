@@ -43,7 +43,7 @@ const Login = () => {
             <div className="container">
                 <div className="signin-content">
                   <div className="signin-image">
-                      <figure><img src="./src/pages/Login/signin-image.jpg" alt="sing up image" /></figure>
+                      <figure><img src="./src/assets/images/signin-image.jpg" alt="sing up image" /></figure>
                       <Link to="/register" className="signup-image-link">Créer un compte</Link>
                   </div>
                   <div className="signin-form">
