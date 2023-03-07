@@ -10,8 +10,8 @@ class CreateAdvertisements < ActiveRecord::Migration[7.0]
       t.string :address
       t.string :city
       t.string :zip_code
-      t.boolean :garden
-      t.boolean :garage
+      t.integer :garden
+      t.integer :garage
       t.string :picture_url
       t.belongs_to :user, index: true
 

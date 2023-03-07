@@ -11,11 +11,27 @@ async function getFetch(endpoint) {
   }
 }
 
+async function postFetch(endpoint, data) {
+  try {
+    const response = await axios.post(`${API_URL}/${endpoint}`, data)
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export const advertAPI = {
   getAdverts: async () => {
     try {
       const response = await getFetch('advertisements');
       return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+  postAdvert: async (data) => {
+    try {
+      const response = await postFetch('advertisements', data)
     } catch (error) {
       throw error;
     }
