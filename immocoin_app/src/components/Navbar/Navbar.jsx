@@ -42,6 +42,11 @@ const Navbar = () => {
         <p>{userInfo.user.username}</p>
         <p>{userInfo.user.email}</p>
       </div>
+      <div>
+        <Link to="/annonces">
+          Annonces
+        </Link>
+      </div>
       <div className='authentication'>
         <Link to="/sign_in">
           Connexion
