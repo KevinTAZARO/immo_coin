@@ -1,17 +1,17 @@
 .navbar {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 20px;
   padding: 2rem;
   background-color: transparent;
 
   .logo {
-    grid-column: 1 / 8;
+    grid-column: 1 / 6;
     grid-row: 1;
   }
 
   .authentication {
-    grid-column: 8 / 8;
+    grid-column: 6 / 6;
     grid-row: 1;
     display:  flex;
     justify-content: space-around;
