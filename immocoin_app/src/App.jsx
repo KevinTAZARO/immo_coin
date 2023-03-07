@@ -23,7 +23,6 @@ function App() {
   if (cookieExist && user.logged === false) {
     let data = " Bearer " + auth_token
     authAPI.loginWithToken(data, setUser);
-    
   }
 
   function Layout() {
