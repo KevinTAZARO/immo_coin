@@ -43,7 +43,7 @@ async function deleteFetch(endpoint, data) {
     console.log(response.data);
     return response;
   } catch (error) {
-      console.error(error);
+    console.error(error);
   }
 }
 
@@ -93,20 +93,9 @@ export const authAPI = {
       throw error;
     }
   },
-  logout: async (data, setUser) => {
+  logout: async (data) => {
     try {
       await deleteFetch('users/sign_out', data);
-      setUser((user) => ({
-        ...user,
-        user: {
-          id: null,
-          username: null,
-          email: null
-        },
-        auth_token: null,
-        authenticated: false,
-        logged: false
-      }));
     } catch (error) {
       console.error(error);
       throw error;

@@ -10,13 +10,31 @@ import { authAPI } from "../../services/fetchData";
 
 const Navbar = () => {
 
-  // const auth_token = Cookies.get('auth_token');
+  const auth_token = Cookies.get('auth_token');
 
   const userInfo = useAtomValue(userAtom)
   console.log(userInfo);
 
-  // const [user, setUser] = useAtom(userAtom);
-  // const header = 'Bearer ' + auth_token
+  const [user, setUser] = useAtom(userAtom);
+  const header = 'Bearer ' + auth_token
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    authAPI.logout(header);
+    Cookies.remove('auth_token');
+    setUser({
+      auth_token: null,
+      user: {
+        id: null,
+        username: null,
+        email: null
+      },
+      loading: false,
+      hasErrors: false,
+      authenticated: false,
+      logged: false
+    })
+  }
 
   return (
     <div className='navbar'>
@@ -37,7 +55,9 @@ const Navbar = () => {
             <AiFillPushpin />
             S'inscrire
           </Link>
-          {/* <button onClick={authAPI.logout(header, setUser)}>Se déconnecter</button> */}
+          <button onClick={handleClick}>
+            Déconnection
+          </button> 
           
         </div>
     </div>
