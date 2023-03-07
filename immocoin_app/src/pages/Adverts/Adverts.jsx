@@ -1,11 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import Navbar from '../../components/Navbar/Navbar'
-import Footer from '../../components/Footer/Footer'
-import './Adverts.scss';
-
-import { advertAPI } from '../../services/fetchAdverts'
-
-const Adverts = () => {
+export default function Adverts() {
 
   const [adverts, setAdverts] = useState([]);
 
@@ -41,4 +34,12 @@ const Adverts = () => {
   )
 }
 
-export default Adverts
+
+import React, { useState, useEffect } from 'react';
+
+import Navbar from '../../components/Navbar/Navbar'
+import Footer from '../../components/Footer/Footer'
+
+import { advertAPI } from '../../services/fetchAdverts'
+
+import './Adverts.scss';

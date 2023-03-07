@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  padding: 2rem 4rem;
+  padding: 1rem 4rem;
   background-color: transparent;
   align-items: center;
   
@@ -36,11 +36,25 @@
   }
 
   .authentication {
-    grid-column: 3 / 2;
+    grid-column: 2 / 2;
     grid-row: 1;
     display: flex;
     justify-content: space-around;
     align-items: center;
+
+    .signin {
+      font-size: 2rem;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .reg {
+      font-size: 2rem;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
   }
 
   a {

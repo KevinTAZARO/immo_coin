@@ -1,13 +1,4 @@
-import { useState } from 'react';
-import Navbar from '../../components/Navbar/Navbar'
-import Footer from '../../components/Footer/Footer'
-import './AdvertForm.scss';
-import userAtom from '../../stores/userStore';
-import { useAtomValue } from 'jotai';
-import { advertAPI } from '../../services/fetchAdverts';
-
-
-const AdvertForm = () => {
+export default function AdvertForm() {
 
   const current_user = useAtomValue(userAtom)
   const current_user_id = current_user.user.id
@@ -125,4 +116,15 @@ const AdvertForm = () => {
   )
 }
 
-export default AdvertForm;
+import { useState } from 'react';
+import { useAtomValue } from 'jotai';
+
+import userAtom from '../../stores/userStore';
+import { advertAPI } from '../../services/fetchAdverts';
+
+import Navbar from '../../components/Navbar/Navbar'
+import Footer from '../../components/Footer/Footer'
+
+import './AdvertForm.scss';
+
+

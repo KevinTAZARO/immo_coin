@@ -1,19 +1,3 @@
-import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from "react-router-dom";
-import { useAtom } from 'jotai';
-import Cookies from 'js-cookie'
-
-import { authAPI } from './services/fetchData';
-import userAtom from './stores/userStore';
-import './styles/style.scss';
-
-import Home from "./pages/Home/Home";
-import Login from "./pages/Login/Login";
-import Register from "./pages/Register/Register";
-import Profile from "./pages/Profile/Profile";
-import Adverts from "./pages/Adverts/Adverts";
-import AdvertForm from "./pages/AdvertForm/AdvertForm";
-
-
 function App() {
 
   const [user, setUser] = useAtom(userAtom);
@@ -75,4 +59,22 @@ function App() {
   )
 }
 
-export default App
+export default App;
+
+import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from "react-router-dom";
+import { useAtom } from 'jotai';
+import Cookies from 'js-cookie'
+
+import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
+import Profile from "./pages/Profile/Profile";
+import Adverts from "./pages/Adverts/Adverts";
+import AdvertForm from "./pages/AdvertForm/AdvertForm";
+
+import { authAPI } from './services/fetchData';
+import userAtom from './stores/userStore';
+
+import './styles/style.scss';
+
+

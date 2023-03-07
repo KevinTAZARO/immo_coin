@@ -1,7 +1,7 @@
-import { atom } from 'jotai'
+function userAtom() {
 
-const userAtom = atom({
-  auth_token: null,
+  return atom({
+    auth_token: null,
     user: {
       id: null,
       username: null,
@@ -11,6 +11,9 @@ const userAtom = atom({
     hasErrors: false,
     authenticated: false,
     logged: false
-})
+  });
+} 
+  
+export default userAtom();
 
-export default userAtom;
+import { atom } from 'jotai'

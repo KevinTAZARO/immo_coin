@@ -1,9 +1,4 @@
-import React from 'react'
-import Navbar from '../../components/Navbar/Navbar'
-import Footer from '../../components/Footer/Footer'
-import './Home.scss'
-
-const Home = () => {
+export default function Home() {
   return (
     <div className='home'>
       <Navbar />
@@ -17,4 +12,11 @@ const Home = () => {
   )
 }
 
-export default Home
+import React from 'react'
+
+import Navbar from '../../components/Navbar/Navbar'
+import Footer from '../../components/Footer/Footer'
+
+import './Home.scss'
+
+
