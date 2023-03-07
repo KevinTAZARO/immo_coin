@@ -39,9 +39,26 @@
   .authentication {
     grid-column: 3 / 2;
     grid-row: 1;
-    display:  flex;
+    display: flex;
     justify-content: space-around;
+<<<<<<< HEAD
     align-items: center;
+=======
+
+    .signin {
+      font-size: 2rem;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .reg {
+      font-size: 2rem;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+>>>>>>> 8b0ae1f32288d28262f2c87294b2673b5dbf197e
   }
 
   a {
@@ -49,5 +66,4 @@
     color: #375513;
     font-size: 2rem;
   }
-  
 }
