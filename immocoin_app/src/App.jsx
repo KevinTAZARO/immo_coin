@@ -11,6 +11,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Profile from "./pages/Profile/Profile";
 import Adverts from "./pages/Adverts/Adverts";
+import AdvertForm from "./pages/AdvertForm/AdvertForm";
 
 
 function App() {
@@ -62,7 +63,8 @@ function App() {
                 }
                 children= {[
                   <Route key="profile" path="/profile/:id" element={<Profile />} />,
-                  <Route key="annonces" path="/annonces" element={<Adverts />}/>
+                  <Route key="annonces" path="/annonces" element={<Adverts />}/>,
+                  <Route key="annonce/post" path="/annonce/post" element={<AdvertForm />}/>,
                 ]} 
               />
               

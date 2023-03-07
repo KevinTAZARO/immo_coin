@@ -49,8 +49,16 @@ const Navbar = () => {
       </div>
       {userInfo.logged === true ? (
         <div className="userInfo">
-          <Link to="/annonces">Annonces</Link>
-          <Link to="/profile/:id">Profile</Link>
+          
+          <Link to="/annonces">
+            Annonces
+          </Link>
+          <Link to="/annonce/post">
+            Poster une annonce
+          </Link>
+          <Link to="/profile/:id">
+            Profile
+          </Link>
 
           <button onClick={handleClick}>Déconnection</button>
         </div>
