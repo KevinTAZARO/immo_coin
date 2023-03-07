@@ -1,5 +1,5 @@
 export default function Register() {
-
+  const navigate = useNavigate();
   const [user, setUser] = useAtom(userAtom);
 
   const [formData, setFormData] = useState(
@@ -25,6 +25,7 @@ export default function Register() {
       const formDataToSent = {"user": formDataWithoutpasswordConfirmation}
       try {
         const response = await authAPI.register(formDataToSent, setUser);
+        navigate('/sign_in', { replace: true });
       } catch (error) {
         console.log(error);
       }
@@ -81,7 +82,7 @@ export default function Register() {
 
 import React, { useState } from 'react'
 import { useAtom } from 'jotai';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Navbar from '../../components/Navbar/Navbar'
 import Footer from '../../components/Footer/Footer'
