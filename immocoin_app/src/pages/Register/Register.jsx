@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import Navbar from '../../components/Navbar/Navbar'
+import Footer from '../../components/Footer/Footer'
 import { authAPI } from '../../services/fetchData'
 import { useAtom } from 'jotai';
 import userAtom from '../../stores/userStore';
@@ -42,6 +44,12 @@ const Register = () => {
 
   return (
     <div className='register'>
+      <Navbar />
+      <div className='register-title'>
+        <h1>
+          Register
+        </h1>
+      </div>
       <form action="" onSubmit={handleSubmit}>
         <input type="text" name='username' placeholder="Nom d'utilisateur" value={formData.username} onChange={handleChange}/>
         <input type="email" name='email' placeholder='Email' value={formData.email} onChange={handleChange}/>
@@ -49,6 +57,7 @@ const Register = () => {
         <input type="password" name='password' placeholder='Mot de passe' value={formData.password} onChange={handleChange}/>
         <button type="submit" onClick={handleSubmit}>S'inscrire</button>
       </form>
+      <Footer />
     </div>
   )
 
