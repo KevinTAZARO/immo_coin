@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_06_094445) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_07_100121) do
+  create_table "advertisements", force: :cascade do |t|
+    t.string "title"
+    t.integer "price"
+    t.text "description"
+    t.string "category"
+    t.integer "room"
+    t.integer "surface"
+    t.string "address"
+    t.string "city"
+    t.string "zip_code"
+    t.boolean "garden"
+    t.boolean "garage"
+    t.string "picture_url"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_advertisements_on_user_id"
+  end
+
   create_table "jwt_denylist", force: :cascade do |t|
     t.string "jti", null: false
     t.datetime "exp", null: false

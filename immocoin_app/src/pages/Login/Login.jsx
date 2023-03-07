@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from "react-router-dom";
 import Navbar from '../../components/Navbar/Navbar'
 import Footer from '../../components/Footer/Footer'
 import { authAPI } from '../../services/fetchData'
@@ -32,21 +33,38 @@ const Login = () => {
     } catch (error) {
       console.log(error);
     }
+    console.log(formData);
   }
 
   return (
     <div className='login'>
       <Navbar />
-      <div className='login-title'>
-        <h1>
-          Login
-        </h1>
-      </div>
-      <form action="" onSubmit={handleSubmit}>
-        <input type="email" name='email' placeholder='Email' value={formData.email} onChange={handleChange}/>
-        <input type="password" name='password' placeholder='Mot de passe' value={formData.password} onChange={handleChange}/>
-        <button type="submit">Se connecter</button>
-      </form>
+      <section className="sign-in">
+            <div className="container">
+                <div className="signin-content">
+                  <div className="signin-image">
+                      <figure><img src="./src/pages/Login/signin-image.jpg" alt="sing up image" /></figure>
+                      <Link to="/register" className="signup-image-link">Créer un compte</Link>
+                  </div>
+                  <div className="signin-form">
+                      <h2 className="form-title">Se connecter</h2>
+                      <form action="" className="register-form" id="login-form" onSubmit={handleSubmit}>
+                          <div className="form-group">
+                              <label><i className="zmdi zmdi-account material-icons-name"></i></label>
+                              <input type="email" name="email" id="email" placeholder="Email" onChange={handleChange}/>
+                          </div>
+                          <div className="form-group">
+                              <label><i className="zmdi zmdi-lock"></i></label>
+                              <input type="password" name="password" id="password" placeholder="Mot de passe" onChange={handleChange}/>
+                          </div>
+                          <div className="form-group form-button">
+                              <input type="submit" name="signin" id="signin" className="form-submit" value="Se connecter"/>
+                          </div>
+                      </form>
+                  </div>
+                </div>
+            </div>
+        </section>
       <Footer />
     </div>
   )
