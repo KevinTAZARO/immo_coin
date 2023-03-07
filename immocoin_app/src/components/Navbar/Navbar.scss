@@ -4,12 +4,7 @@
   gap: 20px;
   padding: 2rem;
   background-color: transparent;
-  &:hover {
-     > .authentication {
-      opacity: 0.5;
-    }
-  }
-  
+  align-items: center;
 
   .logo {
     grid-column: 1 / 4;
@@ -19,8 +14,22 @@
   .authentication {
     grid-column: 4 / 4;
     grid-row: 1;
-    display:  flex;
+    display: flex;
     justify-content: space-around;
+
+    .signin {
+      font-size: 2rem;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .reg {
+      font-size: 2rem;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
   }
 
   a {
@@ -31,5 +40,4 @@
       color: white;
     }
   }
-  
 }
