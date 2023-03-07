@@ -1,13 +1,4 @@
-import React, { useState } from 'react'
-import { Link } from "react-router-dom";
-import Navbar from '../../components/Navbar/Navbar'
-import Footer from '../../components/Footer/Footer'
-import { authAPI } from '../../services/fetchData'
-import { useAtom } from 'jotai';
-import userAtom from '../../stores/userStore';
-import './Login.scss'
-
-const Login = () => {
+export default function Login() {
 
   const [user, setUser] = useAtom(userAtom);
 
@@ -71,4 +62,16 @@ const Login = () => {
 
 }
 
-export default Login;
+
+import React, { useState } from 'react'
+import { Link } from "react-router-dom";
+import { useAtom } from 'jotai';
+
+import Navbar from '../../components/Navbar/Navbar'
+import Footer from '../../components/Footer/Footer'
+
+import { authAPI } from '../../services/fetchData'
+import userAtom from '../../stores/userStore';
+
+import './Login.scss'
+
