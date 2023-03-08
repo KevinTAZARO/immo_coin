@@ -11,7 +11,6 @@ async function getFetch(endpoint, data) {
         'Authorization': data
       }
     });
-    console.log(response)
     return response;
   } catch (error) {
     console.log(error);
@@ -25,7 +24,6 @@ async function postFetch(endpoint, data) {
         'Content-Type': 'application/json'
       }
     });
-    console.log(response.data);
     return response;
   } catch (error) {
     console.error(error);
@@ -40,7 +38,6 @@ async function deleteFetch(endpoint, data) {
         'Authorization': data
       }
     })
-    console.log(response.data);
     return response;
   } catch (error) {
     console.error(error);
