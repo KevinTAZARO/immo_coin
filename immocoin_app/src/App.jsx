@@ -76,6 +76,6 @@ import AdvertForm from "./pages/AdvertForm/AdvertForm";
 import { authAPI } from './services/fetchData';
 import userAtom from './stores/userStore';
 
-import './styles/style.scss';
+import './styles/mixins.scss';
 
 
