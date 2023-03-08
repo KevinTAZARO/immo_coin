@@ -1,5 +1,6 @@
 export default function Adverts() {
-
+  const [mousePosition, setMousePosition] = useState({x: 0, y: 0});
+  const galleryRef = useRef(null);
   const [adverts, setAdverts] = useState([]);
 
   useEffect(() => {
@@ -14,30 +15,41 @@ export default function Adverts() {
     fetchData();
   }, []);
 
+  const handleMouseMove = e => {
+    const gallery = galleryRef.current;
+    setMousePosition({
+      x: e.clientX / window.innerWidth,
+      y: e.clientY / window.innerHeight,
+    });
+    const maxX = gallery.scrollWidth - window.innerWidth;
+    const maxY = gallery.scrollHeight - window.innerHeight;
+    const panX = maxX * mousePosition.x * -1;
+    const panY = maxY * mousePosition.y * -1;
+    gallery.style.transform = `translate(${panX}px, ${panY}px)`;
+  };
 
   return (
-    <div>
-      <Navbar />
-      <div>
-        <h1>
-          Coucou, voici la listes des annonces, c'est carré !
-        </h1>
+    <div className='adverts' onMouseMove={handleMouseMove}>
+      <div className='gallery' ref={galleryRef}>
         {adverts.map(advert => (
           <div className='card' key={advert.id}>
-            <h2>{advert.title}</h2>
-            <p>{advert.description}</p>
+            <img src={advert.picture_url} />
           </div>
         ))}
       </div>
-      <Footer />  
+      <Link to="/" id='home-link' class='meta-link'>
+        <span>
+          Get back to Home
+        </span>
+      </Link>  
     </div>
   )
 }
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
-import Navbar from '../../components/Navbar/Navbar'
 import Footer from '../../components/Footer/Footer'
 
 import { advertAPI } from '../../services/fetchAdverts'
