@@ -5,6 +5,23 @@
     position: absolute;
     transition: transform 800ms ease;
 
+    .card-back {
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 10px;
+
+      h2 {
+        grid-column: 1 / -1;
+      }
+
+      p {
+        font-size: 12px;
+        color:black;
+        font-weight: bold;
+      }
+    }
+
     &:hover {
       cursor: pointer;
       transform: scale(1.1);

@@ -27,17 +27,19 @@ export default function AdvertCard({ advert }) {
     <>
       { isFlipped ? (
         <div className='card' onClick={handleFlip} key={advert.id}>
-          <h2>{content.back.title}</h2>
-          <p>{content.back.description}</p>
-          <p>Price: {content.back.price}</p>
-          <p>Category: {content.back.category}</p>
-          <p>Room: {content.back.room}</p>
-          <p>Surface: {content.back.surface}</p>
-          <p>Address: {content.back.address}</p>
-          <p>City: {content.back.city}</p>
-          <p>Zip_code: {content.back.zip_code}</p>
-          <p>Garage: {content.back.garage}</p>
-          <p>Garden: {content.back.garden}</p>
+          <div className='card-back'>
+            <h2>{content.back.title}</h2>
+            <p>{content.back.description}</p>
+            <p>Price: {content.back.price}</p>
+            <p>Category: {content.back.category}</p>
+            <p>Room: {content.back.room}</p>
+            <p>Surface: {content.back.surface}</p>
+            <p>Address: {content.back.address}</p>
+            <p>City: {content.back.city}</p>
+            <p>Zip_code: {content.back.zip_code}</p>
+            <p>Garage: {content.back.garage}</p>
+            <p>Garden: {content.back.garden}</p>
+          </div>
         </div>
      ) : (
         <div className='card'onClick={handleFlip} key={advert.id}>
