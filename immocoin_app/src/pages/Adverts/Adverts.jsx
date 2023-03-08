@@ -33,7 +33,7 @@ export default function Adverts() {
       <div className='gallery' ref={galleryRef}>
         {adverts.map(advert => (
           <div className='card' key={advert.id}>
-            <img src={advert.picture_url} />
+            <img src={`src/assets/images/${advert.picture_url}`} />
           </div>
         ))}
       </div>
