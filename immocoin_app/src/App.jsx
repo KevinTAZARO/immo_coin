@@ -2,13 +2,14 @@ function App() {
 
   const [user, setUser] = useAtom(userAtom);
 
-  let auth_token = Cookies.get('auth_token');
-  let cookieExist = auth_token !== undefined && auth_token !== null;
-  if (cookieExist && user.logged === false) {
-    let data = " Bearer " + auth_token
-    authAPI.loginWithToken(data, setUser);
-    
-  }
+  useEffect(() => {
+    let auth_token = Cookies.get('auth_token');
+    let cookieExist = auth_token !== undefined && auth_token !== null;
+    if (cookieExist && user.logged === false) {
+      let data = "Bearer " + auth_token;
+      authAPI.loginWithToken(data, setUser);
+    }
+  }, [user.logged]);
 
   function Layout() {
     return (
@@ -63,6 +64,7 @@ function App() {
 export default App;
 
 import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from "react-router-dom";
+import { useEffect } from "react";
 import { useAtom } from 'jotai';
 import Cookies from 'js-cookie'
 

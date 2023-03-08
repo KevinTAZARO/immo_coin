@@ -3,6 +3,16 @@ export default function Adverts() {
   const galleryRef = useRef(null);
   const [adverts, setAdverts] = useState([]);
 
+  const [searchCity, setSearchCity] = useState(null);
+
+  const handleChange = (e) => {
+    e.target.value ? setSearchCity({
+      [e.target.name]: e.target.value,
+    }) : setSearchCity(
+      null
+    )
+  }
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -29,15 +39,31 @@ export default function Adverts() {
   };
 
   return (
+
     <div className='adverts' onMouseMove={handleMouseMove}>
       <div className='gallery' ref={galleryRef}>
-        {adverts.map(advert => (
-          <div className='card' key={advert.id}>
-            <img src={`src/assets/images/${advert.picture_url}`} />
-          </div>
-        ))}
+        {searchCity === null ? (
+          adverts.map(advert => (
+            <div className='card' key={advert.id}>
+              <img src={`src/assets/images/${advert.picture_url}`} />
+            </div>
+          ))
+        ) : (
+          adverts.filter(advert => advert.city.toUpperCase() == searchCity.city.toUpperCase()).map(advert => (
+            <div className='card' key={advert.id}>
+              <img src={`src/assets/images/${advert.picture_url}`} />
+            </div>
+          ))
+        )}
       </div>
-      <Link to="/" id='home-link' class='meta-link'>
+      <div className="signin-form">
+        <form action="" className="register-form" id="login-form">
+            <div className="form-group">
+                <input type="text" name="city" id="city" placeholder="Localisation" onChange={handleChange}/>
+            </div>
+        </form>
+      </div>
+      <Link to="/" id='home-link' className='meta-link'>
         <span>
           Get back to Home
         </span>

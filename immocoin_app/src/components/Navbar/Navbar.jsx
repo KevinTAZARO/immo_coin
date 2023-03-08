@@ -2,7 +2,6 @@ export default function Navbar() {
   const auth_token = Cookies.get("auth_token");
 
   const userInfo = useAtomValue(userAtom);
-  console.log(userInfo);
 
   const [user, setUser] = useAtom(userAtom);
   const header = "Bearer " + auth_token;
