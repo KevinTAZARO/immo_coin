@@ -1,9 +1,8 @@
 export default function Adverts() {
   const [mousePosition, setMousePosition] = useState({x: 0, y: 0});
-  const galleryRef = useRef(null);
   const [adverts, setAdverts] = useState([]);
-
   const [searchCity, setSearchCity] = useState(null);
+  const galleryRef = useRef(null);
 
   const handleChange = (e) => {
     e.target.value ? setSearchCity({
@@ -44,15 +43,11 @@ export default function Adverts() {
       <div className='gallery' ref={galleryRef}>
         {searchCity === null ? (
           adverts.map(advert => (
-            <div className='card' key={advert.id}>
-              <img src={`src/assets/images/${advert.picture_url}`} />
-            </div>
+            <AdvertCard advert={advert}/>
           ))
         ) : (
           adverts.filter(advert => advert.city.toUpperCase() == searchCity.city.toUpperCase()).map(advert => (
-            <div className='card' key={advert.id}>
-              <img src={`src/assets/images/${advert.picture_url}`} />
-            </div>
+            <AdvertCard advert={advert}/>
           ))
         )}
       </div>
@@ -76,7 +71,7 @@ export default function Adverts() {
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-import Footer from '../../components/Footer/Footer'
+import AdvertCard from '../../components/AdvertCard/AdvertCard'
 
 import { advertAPI } from '../../services/fetchAdverts'
 

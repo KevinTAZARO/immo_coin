@@ -1,5 +1,3 @@
-@import 'src/styles/variables';
-
 .adverts {
   background-color: black;
   height: 240vmax;  
@@ -11,37 +9,6 @@
     height: 200vmax;
     width: 200vmax;  
     position: absolute;
-
-    .card {
-      border-radius: 1vmax;
-      position: absolute;
-      transition: transform 800ms ease;
-      &:hover {
-        transform: scale(1.1);
-        > img {
-          opacity: 1;
-          transform: scale(1.01);
-        }
-      }
-    }
-
-    .card > img {
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-      border-radius: inherit;
-      opacity: 0;
-      transition: opacity 800ms ease,
-      transform 800ms ease;
-    }
-
-    @each $card, $properties in $card-properties {
-      .card:nth-child(#{$card}) {
-        @each $property, $value in $properties {
-          #{$property}: $value;
-        }
-      }
-    }
   }
 
   .signin-form {
