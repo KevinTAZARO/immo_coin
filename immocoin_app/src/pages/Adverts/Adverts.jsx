@@ -3,7 +3,7 @@ export default function Adverts() {
   const [adverts, setAdverts] = useState([]);
   const [searchCity, setSearchCity] = useState(null);
   const galleryRef = useRef(null);
-
+console.log(adverts)
   const handleChange = (e) => {
     e.target.value ? setSearchCity({
       [e.target.name]: e.target.value,
@@ -43,11 +43,11 @@ export default function Adverts() {
       <div className='gallery' ref={galleryRef}>
         {searchCity === null ? (
           adverts.map(advert => (
-            <AdvertCard advert={advert}/>
+            <AdvertCard advert={advert} key={advert.id}/>
           ))
         ) : (
           adverts.filter(advert => advert.city.toUpperCase() == searchCity.city.toUpperCase()).map(advert => (
-            <AdvertCard advert={advert}/>
+            <AdvertCard advert={advert} key={advert.id}/>
           ))
         )}
       </div>
