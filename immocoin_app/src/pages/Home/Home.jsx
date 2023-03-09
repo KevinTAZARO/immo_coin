@@ -3,9 +3,6 @@ export default function Home() {
     <div className='home'>
       <Navbar />
       <div className='home-title'>
-        <h1>
-          Home
-        </h1>
       </div>
       <Footer />  
     </div>
